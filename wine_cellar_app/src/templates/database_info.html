@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informations de la base de données</title>
+</head>
+<body>
+    <h1>Informations de la base de données</h1>
+    <p>Nombre d'utilisateurs : {{ num_users }}</p>
+    <p>Nombre de bouteilles : {{ num_bottles }}</p>
+    <a href="/signup"><button>signup</button></a>
+    <h2>Noms des utilisateurs :</h2>
+    <ul>
+        {% for user_name in user_names %}
+            <li>{{ user_name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Noms des bouteilles :</h2>
+    <ul>
+        {% for bottle_name in bottle_names %}
+            <li>{{ bottle_name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
