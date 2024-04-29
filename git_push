@@ -1,0 +1,8 @@
+# Ajouter tous les fichiers modifiés à l'index
+git add .
+
+# Créer un commit avec un message descriptif
+git commit -m "Description de vos modifications ici"
+
+# Récupérer les dernières modifications depuis le dépôt GitLab
+git push origin main
