@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/accueil.css">
+    <title>Accueil</title>
+</head>
+<body>
+    <div class="menu">
+        <img src="../static/images/wine.jpeg" alt="Logo" class="logo">
+        <ul>
+            <li><a href="#section1">Section 1</a></li>
+            <li><a href="#section2">Section 2</a></li>
+            <li><a href="#section3">Section 3</a></li>
+        </ul>
+    </div>
+
+    <div class="content-wrapper">
+        <div id="section1" class="section">
+            <div class="content section1-content">
+                <!-- Colonnes -->
+                <div class="user-info">
+                    {% if 'username' in session %}
+                        <p>Bonjour, {{ user_info.username }}</p>
+                        <p>Nombre d'étagères : {{ user_info.num_shelves }}</p>
+                        <p>Nombre total de bouteilles : {{ user_info.bottles_count }}</p>
+                        <p>Nombre de caves : {{ user_info.num_caves }}</p>
+                    {% else %}
+                        <form action="/login" method="POST">
+                            <div>
+                                <input type="text" placeholder="Nom d'utilisateur" name="username" required >
+                            </div>
+                            <br>
+                            <div>
+                                <input type="password" placeholder="Mot de passe" name="password" required>
+                            </div>
+                            <br>
+                            <div>
+                                <input type="submit" value="Se connecter">
+                            </div>
+                            <br>
+                        </form>
+                        <a href="/signup" id="inscrire_boutton">S'inscrire</a>
+                    {% endif %}
+                </div>
+                <div class="buttons-column">
+                    {% if 'username' in session %}
+                        <div class="section-buttons">
+                            <button><a href="{{ url_for('bouteille') }}">Consulter mes bouteilles</a></button>
+                            <br>
+                            <button><a href="/bottle2">Consulter zebi</a></button>
+                            <br>
+                            <button><a href="{{ url_for('creer_cave') }}">Consulter cave</a></button>
+                            <br>
+                            <button><a href="{{ url_for('creer_etagere') }}">Consulter etagère</a></button>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="logout-column">
+                    {% if 'username' in session %}
+                        <a href="/logout" class="logout-button">Déconnexion</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div id="section2" class="section video-section">
+            <!-- Contenu de la section 2 -->
+            <div class="image-slider">
+                <div class="image-container">
+                    <img src="../static/images/wine7.jpeg" alt="Image 1">
+                </div>
+                <div class="image-container">
+                    <img src="../static/images/wine1.jpeg" alt="Image 2">
+                </div>
+                <!-- Ajoutez les autres images ici -->
+                <div class="image-container">
+                    <img src="../static/images/wine2.jpeg" alt="Image 3">
+                </div>
+                <div class="image-container">
+                    <img src="../static/images/wine3.jpeg" alt="Image 4">
+                </div>
+                <!-- Ajoutez les autres images ici -->
+                <div class="image-container">
+                    <img src="../static/images/wine4.jpeg" alt="Image 5">
+                </div>
+                <div class="image-container">
+                    <img src="../static/images/wine5.jpeg" alt="Image 6">
+                </div>
+               
+                <!-- Ajoutez les autres images ici -->
+            </div>
+        </div>
+
+        <div id="section3" class="section">
+            <!-- Contenu de la section 3 -->
+            BSNSJS
+            SJNS
+        </div>
+
+    </div>
+
+</body>
+</html>

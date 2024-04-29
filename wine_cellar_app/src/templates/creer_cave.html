@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer une Cave</title>
+</head>
+<body>
+    <h1>Créer une Cave</h1>
+    {% if 'username' in session %}
+        <p>Bonjour, {{ session['username'] }}!</p>
+        <form action="/creer_cave" method="POST">
+            <div>
+                <label for="cave_name">Nom de la Cave:</label>
+                <input type="text" id="cave_name" name="cave_name" required>
+            </div>
+            <button type="submit">Créer Cave</button>
+        </form>
+    {% else %}
+        <p>Vous devez être connecté pour créer une cave.</p>
+        <a href="/login">Se connecter</a>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,144 @@
+/* Styles généraux */
+body {
+    background-color: #800020;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+/* Styles pour le menu */
+.menu {
+    width: 200px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    padding: 10px 0;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Styles pour le contenu principal */
+.content-wrapper {
+    flex: 1;
+}
+
+.section {
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    margin: 20px;
+    color: white;
+    border-radius: 60px;
+    position: relative;
+}
+
+.section1-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout-button {
+    margin-left: auto;
+}
+
+.section-buttons {
+    text-align: center;
+}
+
+/* Styles pour le GIF */
+.img-container {
+    width: 300px;
+    height: 337px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.logo {
+    border-radius: 50%;
+    width: 70px; /* Ajustez la taille de votre logo selon vos besoins */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Styles pour le slider d'images */
+.image-slider {
+    overflow: hidden;
+    width: 100%;
+    height: 100%; /* Ajustez la hauteur en fonction de la taille de vos sections */
+    position: relative;
+}
+
+.image-container {
+    width: calc(100% / 6); /* Divise la largeur par le nombre d'images que vous avez */
+    height: 100%; /* Ajustez la hauteur pour remplir la section */
+    display: inline-block;
+    position: center;
+    padding: 5px; /* Ajustez l'espace entre les images selon vos préférences */
+    box-sizing: border-box;
+    margin-left: 25px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Animation pour afficher les images une par une */
+.image-slider img {
+    animation: fadeIn 5s ease-in-out forwards;
+}
+
+.section-buttons button {
+    font-family: Arial, sans-serif; /* Police de caractères */
+    background-color: #333; /* Couleur de fond */
+    color: #333; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement intérieur */
+    text-align: center; /* Alignement du texte */
+    text-decoration: none; /* Decoration du texte */
+    display: inline-block; /* Affichage en bloc */
+    font-size: 16px; /* Taille de la police */
+    margin: 4px 2px; /* Marge autour du bouton */
+    cursor: pointer; /* Curseur de la souris */
+    border-radius: 12px; /* Rayon des bords */
+}
+
+.section-buttons button a {
+    text-decoration: none; /* Supprimer le soulignement du lien */
+    color: white;
+}
+
+.section-buttons button:hover {
+    background-color: #333; /* Couleur de fond au survol */
+    color: #333;
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

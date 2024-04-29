@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création d'Étagère</title>
+</head>
+<body>
+    <h1>Création d'Étagère</h1>
+    {% if 'username' in session %}
+    <p>Bonjour, {{ session['username'] }}!</p>
+    <form action="/creer_etagere" method="POST">
+        <div>
+            <label for="shelf_name">Nom de l'Étagère:</label>
+            <input type="text" id="shelf_name" name="shelf_name" required>
+        </div>
+        <div>
+            <label for="shelf_number">Numéro de l'Étagère:</label>
+            <input type="number" id="shelf_number" name="shelf_number" required>
+        </div>
+        <div>
+            <label for="region">Région:</label>
+            <input type="text" id="region" name="region" required>
+        </div>
+        <div>
+            <label for="available_slots">Nombre de Places Disponibles:</label>
+            <input type="number" id="available_slots" name="available_slots" required>
+        </div>
+        <div>
+            <label for="bottles_per_shelf">Nombre de Bouteilles par Étagère:</label>
+            <input type="number" id="bottles_per_shelf" name="bottles_per_shelf" required>
+        </div>
+        <div>
+            <button type="submit">Créer Étagère</button>
+        </div>
+    </form>
+    {% else %}
+    <p>Vous devez être connecté pour créer une étagère.</p>
+    <a href="/login">Se connecter</a>
+    {% endif %}
+</body>
+</html>
