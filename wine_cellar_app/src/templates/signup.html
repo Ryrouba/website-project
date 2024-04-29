@@ -7,40 +7,33 @@
     <title>Inscription</title>
 </head>
 <body>
-    <form action="/signup" method="POST">
-        <div class="box">
-            <div class="container">
-                <div class="top-header">
-                    <img src="../static/images/wine.jpeg" alt="Logo" class="logo">
-                    <header> WELCOME !</header>
-                </div>
-
-                <div class="input-field">
-                    <input type="text" class="input" placeholder="username" id="username" name="username" required>
-                    <i class="bx bx-user"></i>
-                </div>
-
-                <div class="input-field">
-                    <input type="password" class="input" placeholder="password" id="password" name="password" required>
-                    <i class="bx bx-lock-alt"></i>
-                </div>
-
-                <div class="input-field">
-                    <input type="submit" class="submit" value="Registration">
-                </div>
-
-                <div class="bottom">
-                    <div class="left">
-                        <input type="checkbox" id="check" required>
-                        <label for="check">I accept the terms</label>
-                    </div>
-                    <div class="right">
-                        <label><a href="{{ url_for('database_info') }}">database info</a></label>
-                        <label><a href="{{ url_for('accueil') }}">/ accueil</a></label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
+    <div class="wrapper">
+        <div class="card-switch">
+            <label class="switch">
+               <input type="checkbox" class="toggle">
+               <span class="slider"></span>
+               <span class="card-side"></span>
+               <div class="flip-card__inner">
+                  <div class="flip-card__front">
+                     <div class="title">Log in</div>
+                     <form class="flip-card__form" action="/login" method="POST">
+                        <input class="flip-card__input" name="username" placeholder="Nom d'utilisateur" type="text" required>
+                        <input class="flip-card__input" name="password" placeholder="Mot de passe" type="password" required>
+                        <button class="flip-card__btn">Se connecter</button>
+                     </form>
+                  </div>
+                  <div class="flip-card__back">
+                     <div class="title">Sign up</div>
+                     <form class="flip-card__form" action="/signup" method="POST">
+                        <input class="flip-card__input" placeholder="Username" type="text" id="username" name="username" required>
+                        <input class="flip-card__input" name="email" placeholder="Email" type="email">
+                        <input class="flip-card__input" name="password" placeholder="Password" type="password">
+                        <button class="flip-card__btn" type="submit">Inscription</button>
+                     </form>
+                  </div>
+               </div>
+            </label>
+        </div>   
+    </div>
 </body>
 </html>
