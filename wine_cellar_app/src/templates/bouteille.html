@@ -3,19 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/bouteille.css' %}">
+    <link rel="stylesheet" href="/static/css/bouteille.css">
     <title>Liste des Bouteilles</title>
 </head>
 <body>
-    <h1>Liste des Bouteilles</h1>
-    <div id="bottleDisplay">
-        <!-- L'affichage de la bouteille sélectionnée sera inséré ici -->
+
+
+    
+    <div class="section1">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h2 id="bottleName" class="title"></h2>
+                    <img id="bottleImage" src="" alt="Image de la bouteille" class="bottle-image">
+                </div>
+                <div class="flip-card-back">
+                    <div id="bottleDisplay">
+                        <!-- L'affichage de la bouteille sélectionnée sera inséré ici -->
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottle-shelves">
+        <h3>bouteille de l'étagère ...</h3>
+        {% for bottle in bottles %}
+        <div class="bottle">
+            <h2>{{ bottle[2] }}</h2> <!-- Nom de la bouteille -->
+            <img src="{{ bottle[10] }}" alt="{{ bottle[2] }}" class="bottle-image"> <!-- URL de l'image de la bouteille -->
+        </div>
+        {% endfor %}
+        </div>
+
+   
     </div>
-    <button onclick="showPreviousBottle()">Précédent</button>
-    <button onclick="showNextBottle()">Suivant</button>
+    
+    <button class="pushable" onclick="showPreviousBottle()">
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front">Previous</span>
+    </button>
+
+    <button class="pushable" onclick="showNextBottle()">
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front">Next</span>
+    </button>
+    
+
 
     <h1>Ajouter une Bouteille</h1>
-    <form action="/ajouter_bouteille" method="POST" enctype="multipart/form-data">
+    <form action="/ajouter_bouteille" method="POST" enctype="multipart/form-data" class="formulaire">
         <div>
             <label for="winery">Vignoble :</label>
             <input type="text" id="winery" name="winery" required>
@@ -70,6 +109,56 @@
         </div>
     </form>
 
-    <script src="{% static 'SCRIPTS/bouteille.js' %}"></script>
+    <script>
+        var bottles = {{ bottles | tojson }};
+        var currentBottleIndex = 0;
+
+        function showNextBottle() {
+            if (currentBottleIndex < bottles.length) {
+                var currentBottle = bottles[currentBottleIndex];
+                displayBottle(currentBottle);
+                currentBottleIndex++;
+            } else {
+                alert("Vous avez atteint la dernière bouteille.");
+            }
+        }
+
+        function showPreviousBottle() {
+            if (currentBottleIndex > 0) {
+                currentBottleIndex--;
+                var currentBottle = bottles[currentBottleIndex];
+                displayBottle(currentBottle);
+            } else {
+                alert("Vous êtes déjà à la première bouteille.");
+            }
+        }
+
+        function displayBottle(bottle) {
+            var bottleHtml = `
+                <div class="bottle-container">
+                    <p><strong>Vignoble :</strong> ${bottle[2]}</p> <!-- Nom du vignoble -->
+                    <p><strong>Type :</strong> ${bottle[4]}</p> <!-- Type de vin -->
+                    <p><strong>Année :</strong> ${bottle[5]}</p> <!-- Année -->
+                    <p><strong>Région :</strong> ${bottle[6]}</p> <!-- Région -->
+                    <p><strong>Commentaires :</strong> ${bottle[7]}</p> <!-- Commentaires -->
+                    <p><strong>Note personnelle :</strong> ${bottle[8]}</p> <!-- Note personnelle -->
+                    <p><strong>Note communautaire :</strong> ${bottle[9]}</p> <!-- Note communautaire -->
+                    <p><strong>Prix :</strong> ${bottle[11]}</p> <!-- Prix -->
+                </div>
+            `;
+
+            document.getElementById("bottleDisplay").innerHTML = bottleHtml;
+            bottleImage.src = bottle[10];
+            bottleName.textContent = bottle[3];
+            
+            
+        }
+
+        // Afficher la première bouteille au chargement de la page
+        if (bottles.length > 0) {
+            displayBottle(bottles[0]);
+            currentBottleIndex = 1;
+        }
+    </script>
 </body>
 </html>

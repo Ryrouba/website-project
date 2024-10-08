@@ -1,13 +1,32 @@
+/* Remplacez tout votre CSS par le code ci-dessous */
+
 * {
     font-family: 'Poppins', sans-serif;
 }
 
 body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     background-image: url("../images/background.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card-switch {
+    width: 300px;
+    margin: 0 auto;
 }
 
 .box {
@@ -23,7 +42,7 @@ body {
     flex-direction: column;
     padding: 20px 15px;
     padding-top: 10px;
-    border-radius: 10px; /* Arrondit les bords */
+    border-radius: 10px;
     background-color: rgba(41, 44, 44, 0.9);
 }
 
@@ -111,7 +130,7 @@ label a {
 }
 
 .logo {
-    width: 100px; /* Ajustez la taille de votre logo selon vos besoins */
+    width: 100px;
     height: auto;
     border-radius: 50%;
     margin-bottom: 10px;

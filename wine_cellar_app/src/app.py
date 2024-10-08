@@ -9,7 +9,7 @@ from notifypy import Notify
 
 ##############################################################################################
 ##############################################################################################
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 app.secret_key = os.urandom(24)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 
