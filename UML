@@ -1,0 +1,50 @@
+Pour corréler votre diagramme UML avec le contenu que vous avez partagé, voici une analyse des différentes classes et méthodes qui apparaissent dans votre code par rapport à la structure de votre diagramme UML :
+Diagramme UML
+
+    USER
+        Attributs : user_id, username, password
+        Méthodes :
+            login()
+            logout()
+            DeleteCave()
+            AddCave()
+            DeleteBottle()
+
+    CAVE
+        Attributs : cave_id, user_id, cave_name
+        Méthodes : Aucun spécifié dans le diagramme
+
+    SHELF
+        Attributs : shelf_id, cave_id, shelf_number, region, available_slots, bottles_per_shelf
+        Méthodes :
+            showPreviousBottle()
+            showNextBottle()
+
+    BOTTLE
+        Attributs : bottle_id, shelf_id, winery, name, type, year, region, comments, personal_rating, community_rating, label_photo, price
+        Méthodes : Aucun spécifié dans le diagramme
+
+Correspondance avec le Contenu
+
+    USER
+        Implémentation dans le code : Vous avez une gestion de session qui vérifie si l'utilisateur est connecté, et des routes qui permettent la connexion et l'inscription (/login, /signup).
+        Méthodes : Les méthodes de connexion et déconnexion sont présentes, ainsi que la possibilité d'ajouter ou de supprimer des caves et des bouteilles.
+
+    CAVE
+        Implémentation dans le code : Le code comprend des routes pour créer une cave (creer_cave) et pour récupérer l'ID de la cave associée à un utilisateur lors de l'ajout d'étagères.
+        Méthodes : Actuellement, aucune méthode n'est définie pour les caves en dehors de leur création.
+
+    SHELF
+        Implémentation dans le code : Les étagères sont gérées par une route (creer_etagere) qui permet à l'utilisateur de créer une étagère. Les méthodes pour afficher les bouteilles sont également présentes dans le code (showPreviousBottle, showNextBottle).
+        Méthodes : Les fonctions associées aux étagères sont bien intégrées, notamment pour la navigation entre les bouteilles.
+
+    BOTTLE
+        Implémentation dans le code : Les bouteilles sont ajoutées via un formulaire (/ajouter_bouteille) et sont affichées sur la page des bouteilles (bouteille.html).
+        Méthodes : Il n'y a pas de méthodes spécifiques listées dans le code pour les bouteilles, mais leur gestion est implicite dans les formulaires et les affichages.
+
+Suggestions
+
+    Récupérer des Méthodes pour CAVE et BOTTLE : Vous pourriez envisager d'ajouter des méthodes à la classe CAVE pour des opérations comme la suppression ou l'affichage des caves. Pour la classe BOTTLE, l'ajout de méthodes pour la gestion des bouteilles (comme la mise à jour ou la suppression) pourrait être bénéfique.
+    Documentation : Assurez-vous de bien documenter chaque méthode et attribut dans le code pour qu'ils correspondent clairement aux éléments de votre diagramme UML.
+
+Si vous avez besoin de modifications spécifiques sur le diagramme ou d'aide pour le développement, n'hésitez pas à le faire savoir !
